@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/TuneNest/",            // <-- Added for GitHub Pages deployment
+  base: "/Jonty-C/",            // <-- Added for GitHub Pages deployment
   server: {
     host: "::",
     port: 8080,
