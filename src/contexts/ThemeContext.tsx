@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'minimalist' | 'retro' | 'neon';
+type Theme = 'minimalist' | 'retro' | 'neon' | 'night';
 
 interface ThemeContextType {
   theme: Theme;
@@ -16,7 +16,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     // Load theme from localStorage
     const savedTheme = localStorage.getItem('jonty-hub-theme') as Theme;
-    if (savedTheme && ['minimalist', 'retro', 'neon'].includes(savedTheme)) {
+    if (savedTheme && ['minimalist', 'retro', 'neon', 'night'].includes(savedTheme)) {
       setTheme(savedTheme);
     }
   }, []);
