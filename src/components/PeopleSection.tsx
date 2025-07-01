@@ -6,8 +6,6 @@ import { ExternalLink } from 'lucide-react';
 import { people } from '@/data/people';
 
 const PeopleSection: React.FC = () => {
-  console.log('PeopleSection rendering');
-  console.log('People data:', people);
   
   return (
     <section id="people" className="py-20 px-4 bg-muted/20">
