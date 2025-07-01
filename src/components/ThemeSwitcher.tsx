@@ -9,7 +9,8 @@ const ThemeSwitcher: React.FC = () => {
   const themes = [
     { key: 'minimalist', name: 'Minimal', icon: '◯' },
     { key: 'retro', name: 'Retro', icon: '▣' },
-    { key: 'neon', name: 'Neon', icon: '◈' }
+    { key: 'neon', name: 'Neon', icon: '◈' },
+    { key: 'night', name: 'Night', icon: '☾' }
   ] as const;
 
   return (
