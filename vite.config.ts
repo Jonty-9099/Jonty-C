@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => ({
   base: "/Jonty-C/",            // <-- Added for GitHub Pages deployment
   server: {
     host: "::",
-    port: 8080,
+    port: 8081,
   },
   plugins: [
     react(),
