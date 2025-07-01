@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className={`min-h-screen flex items-center justify-center px-4 ${theme === 'night' ? 'bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800' : ''}`}
+      className={`min-h-screen flex items-center justify-center px-4 ${theme === 'night' ? 'bg-gradient-to-br from-[#0a0a0a] via-[#111111] to-[#0a0a0a]' : ''}`}
     >
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
