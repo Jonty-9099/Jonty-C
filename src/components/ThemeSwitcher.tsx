@@ -14,9 +14,9 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <div className="flex items-center space-x-2">
-      <Sun className="h-4 w-4 text-yellow-500" />
+      <Sun className="h-4 w-4 text-black dark:text-gray-400" />
       <Switch checked={isNight} onCheckedChange={toggleTheme} />
-      <Moon className="h-4 w-4 text-blue-500" />
+      <Moon className="h-4 w-4 text-gray-600 dark:text-white" />
     </div>
   )
 }

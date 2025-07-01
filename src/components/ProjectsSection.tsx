@@ -11,7 +11,7 @@ const ProjectsSection: React.FC = () => {
       case 'ongoing':
         return 'bg-green-500/10 text-green-600 border-green-500/20';
       case 'looking-for-partners':
-        return 'bg-blue-500/10 text-blue-600 border-blue-500/20';
+        return 'bg-gray-300/10 text-gray-700 border-gray-300/20';
       case 'completed':
         return 'bg-gray-500/10 text-gray-600 border-gray-500/20';
       default:
