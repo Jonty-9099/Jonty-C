@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           className="mb-8"
         >
-          <div className="w-32 h-32 mx-auto bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-6xl text-primary-foreground font-bold shadow-2xl">
+          <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 mx-auto bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-5xl sm:text-6xl md:text-7xl text-primary-foreground font-bold shadow-2xl">
             J
           </div>
         </motion.div>

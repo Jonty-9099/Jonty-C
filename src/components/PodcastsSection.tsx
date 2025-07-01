@@ -80,7 +80,7 @@ const PodcastsSection: React.FC = () => {
                       className="mt-0"
                     >
                       {podcast.embedUrl ? (
-                        <div className="w-full h-[232px]">
+                        <div className="w-full h-40 sm:h-52 md:h-[232px]">
                           <iframe
                             src={podcast.embedUrl}
                             width="100%"
@@ -88,7 +88,7 @@ const PodcastsSection: React.FC = () => {
                             frameBorder="0"
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                             loading={activeTab === podcast.id ? "eager" : "lazy"}
-                            className="rounded-lg border border-border"
+                            className="rounded-lg border border-border w-full h-full"
                           ></iframe>
                         </div>
                       ) : (
@@ -97,7 +97,7 @@ const PodcastsSection: React.FC = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 20 }}
                           transition={{ duration: 0.4 }}
-                          className="flex items-center justify-center h-[232px] bg-muted/50 rounded-lg border border-border"
+                          className="flex items-center justify-center h-40 sm:h-52 md:h-[232px] bg-muted/50 rounded-lg border border-border"
                         >
                           <p className="text-muted-foreground text-center max-w-md px-6 leading-relaxed">
                             The mega-shows everybody quotes? I skim them, but not often enough to give them real estate here.

@@ -37,7 +37,7 @@ const PlaylistsSection: React.FC = () => {
             </CardHeader>
             <CardContent>
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="grid w-full grid-cols-3 md:grid-cols-6 mb-6">
+                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-6 mb-6">
                   {playlists.map((playlist, index) => (
                     <motion.div
                       key={`playlist-${index}`}
@@ -60,7 +60,7 @@ const PlaylistsSection: React.FC = () => {
                     value={`playlist-${index}`}
                     className="mt-0"
                   >
-                    <div className="w-full h-[380px]">
+                    <div className="w-full h-60 sm:h-72 md:h-[380px]">
                       <iframe
                         src={playlist.spotifyUrl}
                         width="100%"
@@ -68,7 +68,7 @@ const PlaylistsSection: React.FC = () => {
                         frameBorder="0"
                         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                         loading={activeTab === `playlist-${index}` ? "eager" : "lazy"}
-                        className="rounded-lg border border-border"
+                        className="rounded-lg border border-border w-full h-full"
                       ></iframe>
                     </div>
                   </TabsContent>

@@ -64,6 +64,10 @@
     @apply bg-background text-foreground transition-colors duration-300;
   }
 
+  #root {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
   /* Theme-specific styles */
   :root[data-theme='minimal'] body {
     font-family: 'Inter Tight', sans-serif;
