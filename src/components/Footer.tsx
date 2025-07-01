@@ -86,7 +86,7 @@ const Footer: React.FC = () => {
           </div>
 
           <p className="text-muted-foreground text-sm">
-            © 2024 Jonty Hub. Built with React, TypeScript, and lots of ☕
+            © 2025 Jonty Chudasama. Built with React, TypeScript, and lots of ☕
           </p>
         </motion.div>
       </div>
