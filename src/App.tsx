@@ -16,7 +16,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/TuneNest/">
+        <BrowserRouter basename="/Jonty-C/">
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Index />} />
