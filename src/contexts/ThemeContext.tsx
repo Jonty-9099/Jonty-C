@@ -1,7 +1,7 @@
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
-type Theme = 'minimalist' | 'retro' | 'neon' | 'night';
+type Theme = 'minimal' | 'night'
 
 interface ThemeContextType {
   theme: Theme;
@@ -11,20 +11,24 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<Theme>('minimalist');
+  const [theme, setTheme] = useState<Theme>('minimal');
 
   useEffect(() => {
     // Load theme from localStorage
-    const savedTheme = localStorage.getItem('jonty-hub-theme') as Theme;
-    if (savedTheme && ['minimalist', 'retro', 'neon', 'night'].includes(savedTheme)) {
-      setTheme(savedTheme);
+    const savedTheme = localStorage.getItem('jonty-hub-theme') as Theme
+    if (savedTheme && ['minimal', 'night'].includes(savedTheme)) {
+      setTheme(savedTheme)
     }
   }, []);
 
   useEffect(() => {
     // Apply theme to document
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('jonty-hub-theme', theme);
+    const root = document.documentElement
+    root.classList.add('theme-transition')
+    root.setAttribute('data-theme', theme)
+    localStorage.setItem('jonty-hub-theme', theme)
+    const timeout = setTimeout(() => root.classList.remove('theme-transition'), 300)
+    return () => clearTimeout(timeout)
   }, [theme]);
 
   return (

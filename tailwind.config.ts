@@ -53,24 +53,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				retro: {
-					bg: '#0f0f0f',
-					green: '#00ff41',
-					amber: '#ffb000',
-					gray: '#333333'
-				},
-				neon: {
-					bg: '#0a0a0a',
-					cyan: '#00ffff',
-					magenta: '#ff00ff',
-					purple: '#8b5cf6'
-				}
+                                
 			},
-			fontFamily: {
-				'system': ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-				'retro': ['IBM Plex Mono', 'monospace'],
-				'neon': ['Inter Tight', 'sans-serif']
-			},
+                        fontFamily: {
+                                'system': ['Inter Tight', 'sans-serif']
+                        },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',

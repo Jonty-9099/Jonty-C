@@ -6,20 +6,20 @@
 /* Theme Variables */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 98%;
+    --foreground: 222.2 47.4% 11.2%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222.2 47.4% 11.2%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 220 80% 60%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 220 90% 55%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
@@ -28,51 +28,6 @@
     --radius: 0.5rem;
   }
 
-  /* Retro Theme */
-  :root[data-theme='retro'] {
-    --background: 15 15% 6%;
-    --foreground: 120 100% 50%;
-    --card: 0 0% 10%;
-    --card-foreground: 120 100% 50%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 120 100% 50%;
-    --primary: 45 100% 50%;
-    --primary-foreground: 15 15% 6%;
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 120 100% 50%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 120 50% 70%;
-    --accent: 45 100% 50%;
-    --accent-foreground: 15 15% 6%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 120 100% 50%;
-  }
-
-  /* Neon Theme */
-  :root[data-theme='neon'] {
-    --background: 0 0% 4%;
-    --foreground: 180 100% 50%;
-    --card: 0 0% 8%;
-    --card-foreground: 180 100% 50%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 180 100% 50%;
-    --primary: 300 100% 50%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 180 100% 50%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 180 50% 70%;
-    --accent: 300 100% 50%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 180 100% 50%;
-  }
 
   /* Night Theme */
   :root[data-theme='night'] {
@@ -97,6 +52,10 @@
     --ring: 220 90% 55%;
   }
 
+  :root[data-theme='night'] #hero {
+    background-image: linear-gradient(to bottom right, #0f172a, #1e293b);
+  }
+
   * {
     @apply border-border;
   }
@@ -106,30 +65,14 @@
   }
 
   /* Theme-specific styles */
-  :root[data-theme='minimalist'] body {
-    font-family: var(--font-system);
-  }
-
-  :root[data-theme='retro'] body {
-    font-family: 'IBM Plex Mono', monospace;
-    cursor: url('data:image/gif;base64,R0lGODlhEAAQAPIAAAAAAP///wAAACH5BAEAAAIALAAAAAAQABAAAAMkaLocLrd/1koJEpxOYSvNnz3ZJHKgFRlmJLHVDqxMNGUKOGMvMJQCADs='), auto;
-  }
-
-  :root[data-theme='neon'] body {
+  :root[data-theme='minimal'] body {
     font-family: 'Inter Tight', sans-serif;
   }
 
   :root[data-theme='night'] body {
-    font-family: var(--font-system);
+    font-family: 'Inter Tight', sans-serif;
   }
 
-  :root[data-theme='retro'] * {
-    border-style: dotted !important;
-  }
-
-  :root[data-theme='neon'] .card {
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
-  }
 
   /* Skip to content link */
   .skip-link {
@@ -168,4 +111,9 @@
   background: hsl(var(--primary));
   pointer-events: none;
   z-index: 1000;
+}
+
+/* Smooth theme transition */
+.theme-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

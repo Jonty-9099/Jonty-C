@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React from 'react'
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import ContactPopover from './ContactPopover';
+import { useTheme } from '@/contexts/ThemeContext'
 
 const Hero: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -12,8 +13,13 @@ const Hero: React.FC = () => {
     }
   };
 
+  const { theme } = useTheme()
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center px-4">
+    <section
+      id="hero"
+      className={`min-h-screen flex items-center justify-center px-4 ${theme === 'night' ? 'bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800' : ''}`}
+    >
       <div className="text-center max-w-4xl mx-auto">
         <motion.div
           initial={{ scale: 0 }}
@@ -27,7 +33,7 @@ const Hero: React.FC = () => {
         </motion.div>
 
         <motion.h1
-          className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+          className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
@@ -36,7 +42,7 @@ const Hero: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+          className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto tracking-wide"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
