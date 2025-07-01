@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          Building pharmacy hacks<br />& bold art drops
+          more about me outside of the social media
         </motion.h1>
 
         <motion.p
