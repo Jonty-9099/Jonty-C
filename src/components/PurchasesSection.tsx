@@ -25,7 +25,7 @@ const PurchasesSection: React.FC = () => {
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
-          end: "bottom top",
+          end: () => `+=${totalScroll * 0.5}`,
           scrub: true,
           invalidateOnRefresh: true,
         },
