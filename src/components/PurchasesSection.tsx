@@ -24,10 +24,9 @@ const PurchasesSection: React.FC = () => {
         ease: "none",
         scrollTrigger: {
           trigger: section,
-          start: "top top",
-          end: () => `+=${totalScroll}`,
+          start: "top bottom",
+          end: "bottom top",
           scrub: true,
-          pin: true,
           invalidateOnRefresh: true,
         },
       });
