@@ -94,18 +94,23 @@ export default {
 					'0%': { transform: 'translateX(100%)' },
 					'100%': { transform: 'translateX(0)' }
 				},
-				'confetti': {
-					'0%': { transform: 'scale(0) rotate(0deg)', opacity: '1' },
-					'100%': { transform: 'scale(1) rotate(180deg)', opacity: '0' }
-				}
-			},
-			animation: {
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out',
-				'slide-in-right': 'slide-in-right 0.3s ease-out',
-				'confetti': 'confetti 0.6s ease-out forwards'
-			}
+                                'confetti': {
+                                        '0%': { transform: 'scale(0) rotate(0deg)', opacity: '1' },
+                                        '100%': { transform: 'scale(1) rotate(180deg)', opacity: '0' }
+                                },
+                                marquee: {
+                                        '0%': { transform: 'translateX(0)' },
+                                        '100%': { transform: 'translateX(-50%)' }
+                                }
+                        },
+                        animation: {
+                                'accordion-down': 'accordion-down 0.2s ease-out',
+                                'accordion-up': 'accordion-up 0.2s ease-out',
+                                'fade-in': 'fade-in 0.6s ease-out',
+                                'slide-in-right': 'slide-in-right 0.3s ease-out',
+                                'confetti': 'confetti 0.6s ease-out forwards',
+                                marquee: 'marquee 30s linear infinite'
+                        }
 		}
 	},
 	plugins: [require("tailwindcss-animate")],
