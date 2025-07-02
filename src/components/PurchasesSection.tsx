@@ -47,13 +47,12 @@ const PurchasesSection: React.FC = () => {
                   <h3 className="font-semibold mb-1">{purchase.item}</h3>
                   <p className="text-primary font-medium mb-1">{purchase.price}</p>
                   <p className="text-muted-foreground text-sm">{purchase.why}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+                /CardContent>
+      </Card>
+    </motion.div>
+  ))}
+    </div> 
+  </section>
   );
 };
 
