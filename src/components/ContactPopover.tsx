@@ -60,7 +60,7 @@ const ContactPopover: React.FC = () => {
             size="lg"
             className="text-lg px-8 py-3 transition-transform duration-200"
           >
-            Say Hi 👋
+            Drop Me a Hello 👋
           </Button>
         </motion.div>
       </PopoverTrigger>
