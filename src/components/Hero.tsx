@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
         >
-          more about me outside of the social media
+          Outside the social feed, there’s a whole other me.
         </motion.h1>
 
         <motion.p
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          This is more of me – feel free to scroll around and get to know me better.
+          Here’s the stuff that doesn’t fit in a reel or a tweet. Come poke around — it’s safe, I swear.
         </motion.p>
 
         <motion.div
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
             onClick={() => scrollToSection('#projects')}
             className="text-lg px-8 py-3 hover:scale-105 transition-transform duration-200"
           >
-            View Projects
+            Peek at My Projects
           </Button>
           <ContactPopover />
         </motion.div>
