@@ -1,42 +1,14 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Card, CardContent } from '@/components/ui/card';
 import { purchases } from '@/data/purchases';
 
 const PurchasesSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const section = sectionRef.current;
-    const track = trackRef.current;
-    if (!section || !track) return;
-
-    const totalScroll = track.scrollWidth - section.clientWidth;
-
-    const ctx = gsap.context(() => {
-      gsap.to(track, {
-        x: -totalScroll,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top bottom",
-          end: () => `+=${totalScroll * 0.5}`,
-          scrub: true,
-          invalidateOnRefresh: true,
-        },
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
+  const duplicated = [...purchases, ...purchases];
 
   return (
-    <section ref={sectionRef} className="py-20 px-4 bg-muted/20 overflow-hidden">
+    <section className="py-20 px-4 bg-muted/20 overflow-hidden">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,8 +23,9 @@ const PurchasesSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div ref={trackRef} className="flex gap-4">
-          {purchases.map((purchase, index) => (
+        <div className="relative overflow-hidden">
+          <div className="flex w-max animate-marquee gap-4">
+          {duplicated.map((purchase, index) => (
             <motion.div
               key={purchase.item}
               className="w-[300px] shrink-0"
@@ -71,7 +44,8 @@ const PurchasesSection: React.FC = () => {
                   />
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold mb-2">{purchase.item}</h3>
+                  <h3 className="font-semibold mb-1">{purchase.item}</h3>
+                  <p className="text-primary font-medium mb-1">{purchase.price}</p>
                   <p className="text-muted-foreground text-sm">{purchase.why}</p>
                 </CardContent>
               </Card>
