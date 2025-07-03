@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -47,45 +48,45 @@ const BlogSection: React.FC = () => {
           {blogPosts.map((post, index) => {
             const Icon = getIcon(post.category);
             return (
-              <motion.a
+              <motion.div
                 key={post.title}
-                href={post.url}
-                className="block h-full group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.08)' }}
               >
-                <Card className="h-full flex flex-col border border-border/80 rounded-lg overflow-hidden hover:shadow-lg transition-colors">
-                  <CardHeader className="pb-4 flex items-start gap-3">
-                    <div className="p-2 rounded-md bg-muted/50">
-                      <Icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="flex-1 space-y-1">
-                      <CardTitle className="text-lg md:text-xl group-hover:text-primary">
-                        {post.title}
-                      </CardTitle>
-                      <p className="text-sm text-muted-foreground italic">
-                        {new Date(post.date).toLocaleDateString()}
+                <Link to={post.url} className="block h-full group">
+                  <Card className="h-full flex flex-col border border-border/80 rounded-lg overflow-hidden hover:shadow-lg transition-colors">
+                    <CardHeader className="pb-4 flex items-start gap-3">
+                      <div className="p-2 rounded-md bg-muted/50">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="flex-1 space-y-1">
+                        <CardTitle className="text-lg md:text-xl group-hover:text-primary">
+                          {post.title}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground italic">
+                          {new Date(post.date).toLocaleDateString()}
+                        </p>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="flex-1 flex flex-col space-y-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {post.excerpt}
                       </p>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="flex-1 flex flex-col space-y-4">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {post.excerpt}
-                    </p>
-                    <div className="mt-auto">
-                      <Badge variant="outline" className="mb-2">
-                        {post.category}
-                      </Badge>
-                      <p className="text-primary font-medium group-hover:underline">
-                        Read More →
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.a>
+                      <div className="mt-auto">
+                        <Badge variant="outline" className="mb-2">
+                          {post.category}
+                        </Badge>
+                        <p className="text-primary font-medium group-hover:underline">
+                          Read More →
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
             );
           })}
         </div>
