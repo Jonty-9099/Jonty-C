@@ -1,12 +1,34 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { blogPosts } from '@/data/blogPosts';
+import type { LucideIcon } from 'lucide-react';
+import { Cpu, Video, PenTool, Activity, Smile, Settings } from 'lucide-react';
+
+const categoryIcons: Record<string, LucideIcon> = {
+  AI: Cpu,
+  Healthtech: Activity,
+  Telemedicine: Video,
+  Design: PenTool,
+  Lifestyle: Smile,
+  Engineering: Settings,
+};
+
+const getIcon = (category: string): LucideIcon => {
+  return categoryIcons[category] || Activity;
+};
 
 const BlogSection: React.FC = () => {
   return (
-    <section id="blog" className="py-20 px-4">
+    <section id="blog" className="py-20 px-4 bg-muted/20">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,27 +43,51 @@ const BlogSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPosts.map((post, index) => (
-            <motion.div
-              key={post.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5, rotateX: 5 }}
-            >
-              <Card className="h-full hover:shadow-lg transition-all duration-300 cursor-pointer">
-                <CardHeader>
-                  <CardTitle className="line-clamp-2">{post.title}</CardTitle>
-                  <CardDescription>{new Date(post.date).toLocaleDateString()}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground line-clamp-3">{post.excerpt}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {blogPosts.map((post, index) => {
+            const Icon = getIcon(post.category);
+            return (
+              <motion.a
+                key={post.title}
+                href={post.url}
+                className="block h-full group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.08)' }}
+              >
+                <Card className="h-full flex flex-col border border-border/80 rounded-lg overflow-hidden hover:shadow-lg transition-colors">
+                  <CardHeader className="pb-4 flex items-start gap-3">
+                    <div className="p-2 rounded-md bg-muted/50">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="flex-1 space-y-1">
+                      <CardTitle className="text-lg md:text-xl group-hover:text-primary">
+                        {post.title}
+                      </CardTitle>
+                      <p className="text-sm text-muted-foreground italic">
+                        {new Date(post.date).toLocaleDateString()}
+                      </p>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col space-y-4">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <div className="mt-auto">
+                      <Badge variant="outline" className="mb-2">
+                        {post.category}
+                      </Badge>
+                      <p className="text-primary font-medium group-hover:underline">
+                        Read More →
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.a>
+            );
+          })}
         </div>
       </div>
     </section>
