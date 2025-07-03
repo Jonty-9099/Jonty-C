@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
@@ -18,6 +18,10 @@ import { blogArticles, getArticleBySlug } from '@/data/blogArticles'
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const article = getArticleBySlug(slug ?? '')
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [slug])
 
   if (!article) {
     return (
