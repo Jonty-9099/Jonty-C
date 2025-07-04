@@ -18,7 +18,10 @@ import { blogArticles, getArticleBySlug } from '@/data/blogArticles'
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const article = getArticleBySlug(slug ?? '')
-
+ useEffect(() => {
+  // Jump to the top of the page immediately when navigating to a new post
+  window.scrollTo({ top: 0, left: 0 })
+}, [slug])
   if (!article) {
     return (
       <div className="min-h-screen flex items-center justify-center">
