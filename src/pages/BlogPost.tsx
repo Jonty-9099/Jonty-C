@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navigation from '@/components/Navigation'
@@ -19,9 +19,6 @@ const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const article = getArticleBySlug(slug ?? '')
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-  }, [slug])
 
   if (!article) {
     return (
@@ -35,8 +32,8 @@ const BlogPost: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
-      <main className="flex-1 pt-6">
+        <Navigation />
+        <main id="main-content" className="flex-1 pt-6">
         <div className="container mx-auto max-w-3xl px-4">
           <Breadcrumb className="mb-4">
             <BreadcrumbList>
@@ -69,7 +66,9 @@ const BlogPost: React.FC = () => {
           </p>
           <img
             src={article.image}
-            alt=""
+            alt={article.title}
+            width="1200"
+            height="600"
             className="w-full h-auto rounded-lg mb-6"
           />
           <div className="flex flex-wrap gap-2 mb-8">
