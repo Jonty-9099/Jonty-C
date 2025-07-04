@@ -20,7 +20,8 @@ const BlogPost: React.FC = () => {
   const article = getArticleBySlug(slug ?? '')
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    // Jump to the top of the page immediately when navigating to a new post
+    window.scrollTo({ top: 0, left: 0 })
   }, [slug])
 
   if (!article) {
