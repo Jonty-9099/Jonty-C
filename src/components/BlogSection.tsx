@@ -9,15 +9,23 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { blogPosts } from '@/data/blogPosts';
 import type { LucideIcon } from 'lucide-react';
-import { Cpu, Video, PenTool, Activity, Smile, Settings } from 'lucide-react';
+import {
+  Cpu,
+  Video,
+  PenTool,
+  Activity,
+  Smile,
+  Settings,
+  ArrowLeft,
+  ArrowRight,
+} from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
   type CarouselApi,
 } from '@/components/ui/carousel';
 
@@ -35,21 +43,21 @@ const getIcon = (category: string): LucideIcon => {
 };
 
 const BlogSection: React.FC = () => {
-  const maxScrolls = 3
-  const [scrollCount, setScrollCount] = React.useState(0)
-  const apiRef = React.useRef<CarouselApi | null>(null)
+  const maxScrolls = 3;
+  const [scrollCount, setScrollCount] = React.useState(0);
+  const apiRef = React.useRef<CarouselApi | null>(null);
 
   const handleNext = () => {
-    if (scrollCount >= maxScrolls) return
-    apiRef.current?.scrollNext()
-    setScrollCount((c) => Math.min(c + 1, maxScrolls))
-  }
+    if (scrollCount >= maxScrolls) return;
+    apiRef.current?.scrollNext();
+    setScrollCount((c) => Math.min(c + 1, maxScrolls));
+  };
 
   const handlePrev = () => {
-    if (scrollCount <= 0) return
-    apiRef.current?.scrollPrev()
-    setScrollCount((c) => Math.max(c - 1, 0))
-  }
+    if (scrollCount <= 0) return;
+    apiRef.current?.scrollPrev();
+    setScrollCount((c) => Math.max(c - 1, 0));
+  };
 
   return (
     <section id="blog" className="py-20 px-4 bg-muted/20">
@@ -67,8 +75,23 @@ const BlogSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <Carousel setApi={(api) => (apiRef.current = api)} className="relative">
-          <CarouselContent className="cursor-grab">
+        <div className="flex items-center gap-4">
+          <Button
+            onClick={handlePrev}
+            disabled={scrollCount === 0}
+            variant="outline"
+            size="icon"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span className="sr-only">Previous slide</span>
+          </Button>
+
+          <Carousel
+            setApi={(api) => (apiRef.current = api)}
+            opts={{ slidesToScroll: 1, draggable: false }}
+            className="flex-1"
+          >
+            <CarouselContent>
             {blogPosts.map((post, index) => {
               const Icon = getIcon(post.category)
               return (
@@ -84,7 +107,7 @@ const BlogSection: React.FC = () => {
                     whileHover={{ scale: 1.03, boxShadow: '0 8px 20px rgba(0,0,0,0.08)' }}
                   >
                     <Link to={post.url} className="block h-full group">
-                      <Card className="h-full flex flex-col border border-border/80 rounded-lg overflow-hidden hover:shadow-lg transition-colors">
+                      <Card className="h-full min-h-[22rem] flex flex-col border border-border/80 rounded-lg overflow-hidden hover:shadow-lg transition-colors">
                         <CardHeader className="pb-4 flex items-start gap-3">
                           <div className="p-2 rounded-md bg-muted/50">
                             <Icon className="w-5 h-5 text-primary" />
@@ -99,7 +122,7 @@ const BlogSection: React.FC = () => {
                           </div>
                         </CardHeader>
                         <CardContent className="flex-1 flex flex-col space-y-4">
-                          <p className="text-muted-foreground leading-relaxed">
+                          <p className="text-muted-foreground leading-relaxed line-clamp-3">
                             {post.excerpt}
                           </p>
                           <div className="mt-auto">
@@ -119,7 +142,7 @@ const BlogSection: React.FC = () => {
             })}
             <CarouselItem className="basis-full md:basis-1/4">
               <Link to="/blog" className="block h-full group">
-                <Card className="h-full flex flex-col items-center justify-center border-dashed border-2">
+                <Card className="h-full min-h-[22rem] flex flex-col items-center justify-center border-dashed border-2">
                   <CardHeader className="pb-2 text-center">
                     <CardTitle>Show More</CardTitle>
                   </CardHeader>
@@ -130,17 +153,18 @@ const BlogSection: React.FC = () => {
               </Link>
             </CarouselItem>
           </CarouselContent>
-          <CarouselPrevious
-            onClick={handlePrev}
-            disabled={scrollCount === 0}
-            className="left-0 top-1/2 -translate-y-1/2"
-          />
-          <CarouselNext
+          </Carousel>
+
+          <Button
             onClick={handleNext}
             disabled={scrollCount === maxScrolls}
-            className="right-0 top-1/2 -translate-y-1/2"
-          />
-        </Carousel>
+            variant="outline"
+            size="icon"
+          >
+            <ArrowRight className="h-4 w-4" />
+            <span className="sr-only">Next slide</span>
+          </Button>
+        </div>
       </div>
     </section>
   );
