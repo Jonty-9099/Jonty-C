@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
@@ -18,6 +19,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter basename="/Jonty-C/">
+          <ScrollToTop />
           <AnimatePresence mode="wait">
             <Routes>
               <Route path="/" element={<Index />} />
