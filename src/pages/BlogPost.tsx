@@ -19,7 +19,6 @@ const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
   const article = getArticleBySlug(slug ?? '')
 
-
   if (!article) {
     return (
       <div className="min-h-screen flex items-center justify-center">
