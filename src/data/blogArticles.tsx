@@ -114,6 +114,49 @@ export const blogArticles: BlogArticle[] = [
         </p>
       </>
     )
+  },
+  {
+    slug: 'creative-hobbies',
+    title: 'The Power of Creative Hobbies',
+    date: '2024-07-10',
+    author: 'Jonty Chudasama',
+    image: 'https://placehold.co/1200x600',
+    category: 'Lifestyle',
+    tags: ['Balance', 'Motivation'],
+    content: (
+      <>
+        <p>
+          It might seem counter-intuitive, but stepping away from the computer to
+          knit or sketch keeps my engineering brain sharp. A change of pace sparks
+          new ideas.
+        </p>
+        <p>
+          Creative projects offer low-stakes experimentation. That sense of play
+          refreshes my focus when returning to more technical challenges.
+        </p>
+      </>
+    )
+  },
+  {
+    slug: 'breaking-down-complex-systems',
+    title: 'Breaking Down Complex Systems',
+    date: '2024-07-15',
+    author: 'Jonty Chudasama',
+    image: 'https://placehold.co/1200x600',
+    category: 'Engineering',
+    tags: ['Problem Solving', 'Architecture'],
+    content: (
+      <>
+        <p>
+          Large architectures can feel overwhelming at first. I like to map
+          dependencies and tease apart individual components.
+        </p>
+        <p>
+          Gradually untangling each piece uncovers opportunities for
+          simplification and reuse.
+        </p>
+      </>
+    )
   }
 ]
 
